@@ -1,7 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import time
 
@@ -9,10 +7,18 @@ options = Options()
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-background-timer-throttling")
+options.add_argument("--disable-backgrounding-occluded-windows")
+options.add_argument("--disable-extensions")
+options.add_argument("--disable-popup-blocking")
+options.add_argument("--disable-gpu")
+options.add_argument("--disable-infobars")
+options.add_argument("--disable-features=EnableAutomation")
+options.add_argument("--disable-logging")
 
 driver = webdriver.Chrome(service=Service("/bin/chromedriver"), options=options)
 driver.maximize_window()
-driver.get("http://your_url")
+driver.get("https://www.thfradio.de/de")
 
 time.sleep(2)
 
